@@ -11,7 +11,7 @@ type DriverController struct {
 // @title 驱动列表
 // @Description 获取所有的驱动信息
 // @Success 200 {object}
-// @router /list [get]
+// @router /driver/list [get]
 func (c *DriverController) GetDrivers() {
 	drivers := drivers.GetDrivers()
 

@@ -15,10 +15,9 @@ import (
 
 func init() {
 	ns := beego.NewNamespace("/api/v1",
-		beego.NSNamespace("/driver",
-			beego.NSInclude(
-				&controllers.DriverController{},
-			),
+		beego.NSInclude(
+			&controllers.DriverController{},
+			&controllers.BoxController{},
 		),
 	)
 	beego.AddNamespace(ns)
