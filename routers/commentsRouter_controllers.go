@@ -13,6 +13,13 @@ func init() {
 			AllowHTTPMethods: []string{"get"},
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/atopse/server/controllers:BoxController"] = append(beego.GlobalControllerRouter["github.com/atopse/server/controllers:BoxController"],
+		beego.ControllerComments{
+			Method: "GetBoxByNamespace",
+			Router: `/box/detail/:namespace`,
+			AllowHTTPMethods: []string{"get"},
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/atopse/server/controllers:DriverController"] = append(beego.GlobalControllerRouter["github.com/atopse/server/controllers:DriverController"],
 		beego.ControllerComments{
 			Method: "GetDrivers",

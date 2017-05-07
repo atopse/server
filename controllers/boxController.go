@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"github.com/atopse/comm"
 	"github.com/atopse/server/service"
 )
 
@@ -21,4 +22,21 @@ func (c *BoxController) GetBoxs() {
 		return
 	}
 	c.JSON(boxs)
+}
+
+// GetBoxByNamespace 获取Box详细信息通过
+// @Success 200 {object}
+// @router /box/detail/:namespace [get]
+func (c *BoxController) GetBoxByNamespace() {
+	namespace := c.Ctx.Input.Param(":namespace")
+	if namespace == "" {
+		c.JSON(comm.ErrDataIsEmpty())
+		return
+	}
+	box, err := service.FindBox(namespace)
+	if err != nil {
+		c.JSON(err)
+		return
+	}
+	c.JSON(box)
 }
